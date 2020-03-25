@@ -13,21 +13,27 @@ const inputCases = (field: string, state: any, action: any) => ({
   [`${field}-form`]: () => ({ ...state, [`${field}`]: action.content }),
 })
 
-const caseSelector = (type, fields, index, state, action) => {
-  const cases = {
-    input: () => {},
-    fetch: () => { fields.map(field => (index = { ...index, ...fetchCases(field, state, action) })) },
-  }
+const caseSelector = (type: string, fields: string[], state: any, action: any) => {
+  let index = { ...defaultCase(state) };
 
-  return cases[type]
+  const cases = {
+    input: () => { fields.map(field => (index = { ...index, ...inputCases(field, state, action) })) },
+    fetch: () => { fields.map(field => (index = { ...index, ...fetchCases(field, state, action) })) },
+  };
+  cases[`${type}`]();
+
+  return index;
 }
 
-const genericReducer = (initialState: Object, fields: string[]) => {
+interface ISet {
+  fields: string[];
+  caseSelectorName: string;
+}
+
+const genericReducer = (initialState: Object, sets: ISet[]) => {
   const reducer = (state = initialState, action: any) => {
-    let index = { ...defaultCase(state) };
-    // caseSelector('fetch', fields, index, state, action);
-    // console.log('selector: ', caseSelector('fetch', fields, index, state, action));
-    fields.map(field => (index = { ...index, ...fetchCases(field, state, action) }));
+    let index: any;
+    sets.map(set => (index = { ...index, ...caseSelector(set.caseSelectorName, set.fields, state, action) } ));
 
     return (index[action.type] || index['DEFAULT'])();
   }
@@ -35,11 +41,18 @@ const genericReducer = (initialState: Object, fields: string[]) => {
   return reducer;
 }
 
+const messengerParams = [
+  { fields: ['rooms', 'messages'], caseSelectorName: 'fetch' },
+  { fields: ['newRoomForm'], caseSelectorName: 'input' },
+];
 const messengerInitState = { rooms: [], messages: [] };
-const messenger = genericReducer(messengerInitState, ['rooms', 'messages']);
+const messenger = genericReducer(messengerInitState, messengerParams);
 
+const currentUserParams = [
+  { fields: ['currentUser'], caseSelectorName: 'fetch' },
+];
 const currentUserInitState = { currentUser: null };
-const currentUser = genericReducer(currentUserInitState, ['currentUser']);
+const currentUser = genericReducer(currentUserInitState, currentUserParams);
 
 export default combineReducers({
   messenger,
