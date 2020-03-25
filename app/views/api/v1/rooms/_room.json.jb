@@ -1,0 +1,9 @@
+data = room.attributes.slice('id', 'name', 'updated_at')
+
+relationships = {
+  room_messages: room.room_messages.map do |room_message|
+    render(partial: '/api/v1/rooms/messages/room_message', locals: { room_message: room_message })
+  end
+}
+
+data.merge(relationships: relationships)

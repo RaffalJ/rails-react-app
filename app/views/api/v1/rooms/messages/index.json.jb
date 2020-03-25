@@ -1,0 +1,1 @@
+render partial: 'room_message', collection: room_messages

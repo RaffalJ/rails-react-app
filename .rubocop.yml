@@ -1,0 +1,34 @@
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'spec/**/*'
+    - 'node_modules/**/*'
+  TargetRubyVersion:                  2.6.5
+Metrics/LineLength:
+  Max:                                140
+Style/Documentation:
+  Enabled:                            false
+Layout/ParameterAlignment:
+  EnforcedStyle:                      with_fixed_indentation
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle:                      indented
+Layout/MultilineHashBraceLayout:
+  Enabled:                            false
+Layout/EmptyLineAfterGuardClause:
+  Enabled:                            false
+Style/ClassAndModuleChildren:
+  Enabled:                            false
+Style/FrozenStringLiteralComment:
+  Enabled:                            false
+Style/EmptyMethod:
+  EnforcedStyle:                      expanded
+Metrics/MethodLength:
+  Max:                                25
+Metrics/CyclomaticComplexity:
+  Max:                                10
+Metrics/AbcSize:
+  Max:                                40

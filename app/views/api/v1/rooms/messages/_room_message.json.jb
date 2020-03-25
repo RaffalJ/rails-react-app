@@ -1,0 +1,1 @@
+room_message.attributes.slice('id', 'message', 'user_id', 'room_id', 'created_at')

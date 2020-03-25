@@ -1,0 +1,33 @@
+{
+  "name": "messenger_react",
+  "private": true,
+  "dependencies": {
+    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "4.2.2",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "actioncable": "^5.2.4-1",
+    "axios": "^0.19.2",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "bootstrap": "^4.4.1",
+    "prop-types": "^15.7.2",
+    "react": "next",
+    "react-actioncable-provider": "^2.0.0",
+    "react-dom": "next",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "react-with-styles": "^4.1.0",
+    "redux": "^4.0.5",
+    "ts-loader": "^6.2.1",
+    "turbolinks": "^5.2.0",
+    "typescript": "^3.8.3"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^3.10.3"
+  }
+}

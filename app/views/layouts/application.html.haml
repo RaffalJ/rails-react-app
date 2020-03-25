@@ -1,0 +1,11 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title MessengerReact
+
+    = stylesheet_pack_tag 'stylesheets'
+    = javascript_pack_tag 'application'
+    = csrf_meta_tags
+  %body
+    = yield
