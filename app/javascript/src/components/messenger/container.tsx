@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { Route, Link, Redirect, Switch } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 
 import { fetchRooms, createRoom } from './actions';
 import ChatRoom from './chat-room';
 import RoomForm from './room-form';
+import RoomList from './room-list';
 import { IRoom } from '../../../types/messenger/IRoom';
 import './styles.scss';
 
@@ -29,17 +30,9 @@ export default function Container() {
 
   const handleForm = (e: any) => {
     e.preventDefault();
-    createRoom(dispatch, {room: { name: newRoomName }});
+    createRoom(dispatch, { room: { name: newRoomName } });
     setNewRoomName('');
   }
-
-  const roomsList: IRoom[] = rooms.map((room: IRoom) => {
-    return (
-      <li key={room.id} className='test'>
-        <Link to={`/messenger/${room.id}`}>{room.name}</Link>
-      </li>
-    );
-  });
 
   const RoomFormRoute = () => {
     return (
@@ -50,7 +43,7 @@ export default function Container() {
   return (
     <div className='messenger'>
       <div className='messenger-roomsList'>
-        {roomsList}
+        <RoomList rooms={rooms}/>
       </div>
 
       <Switch>

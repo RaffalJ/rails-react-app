@@ -9,15 +9,10 @@ const fetchCases = (field: string, state: any, action: any) => ({
   [`${field}-add`]:     () => ({ ...state, [`${field}`]: state[`${field}`].concat(action.payload) }),
 });
 
-const inputCases = (field: string, state: any, action: any) => ({
-  [`${field}-form`]: () => ({ ...state, [`${field}`]: action.content }),
-})
-
 const caseSelector = (type: string, fields: string[], state: any, action: any) => {
   let index = { ...defaultCase(state) };
 
   const cases = {
-    input: () => { fields.map(field => (index = { ...index, ...inputCases(field, state, action) })) },
     fetch: () => { fields.map(field => (index = { ...index, ...fetchCases(field, state, action) })) },
   };
   cases[`${type}`]();
@@ -39,13 +34,12 @@ const genericReducer = (initialState: Object, sets: ISet[]) => {
   }
 
   return reducer;
-}
+};
 
 const messengerParams = [
   { fields: ['rooms', 'messages'], caseSelectorName: 'fetch' },
-  { fields: ['newRoomForm'], caseSelectorName: 'input' },
 ];
-const messengerInitState = { rooms: [], messages: [] };
+const messengerInitState = { rooms: [], messages: [], selectedRoom: '' };
 const messenger = genericReducer(messengerInitState, messengerParams);
 
 const currentUserParams = [

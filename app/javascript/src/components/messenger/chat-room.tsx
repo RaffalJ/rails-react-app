@@ -9,7 +9,7 @@ import { MessageForm } from './message-form';
 
 let roomChannel: typeof consumer;
 
-export default function Container() {
+export default function ChatRoom() {
   const dispatch = useDispatch();
   const [currentMessage, setCurrentMessage] = useState(String);
   let { roomId } = useParams();
