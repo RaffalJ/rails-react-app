@@ -11,8 +11,7 @@ let roomChannel: typeof consumer;
 
 export default function ChatRoom() {
   const dispatch = useDispatch();
-  const [currentMessage, setCurrentMessage] = useState(String);
-  let { roomId } = useParams();
+  let { roomId, roomName } = useParams();
 
   useEffect(() => {
     roomChannel = createSocket(roomId, consumer, dispatch);
@@ -22,18 +21,17 @@ export default function ChatRoom() {
     };
   }, [roomId]);
 
-  const handleForm = (e: any) => {
-    e.preventDefault();
+  const onSubmit = (e: any) => {
     roomChannel.send({
-      message: currentMessage,
+      message: e,
     });
-    setCurrentMessage('');
   }
 
   return (
-    <div className='messenger-chatRoom'>
+    <div className='messenger-content'>
+      <h2>{roomName}</h2>
       <MessageList />
-      <MessageForm onSubmit={handleForm} setCurrentMessage={setCurrentMessage} currentMessage={currentMessage}/>
+      <MessageForm onSubmit={onSubmit}/>
     </div>
   );
 }

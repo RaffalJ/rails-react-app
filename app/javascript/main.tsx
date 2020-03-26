@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from "react-redux";
-import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 import { API } from './services/api';
 import Messenger from './src/components/messenger/container';
@@ -19,14 +19,23 @@ export default function() {
   }, []);
 
   return(
-    <div className='container'>
+    <div className='main'>
       <BrowserRouter>
         <div id='navbar'>
-          <ul>
-            <li>
-              <Link to="/messenger">Messenger</Link>
-            </li>
-          </ul>
+          <div className='navbar-corner'>
+            Ruffy App
+          </div>
+
+          <div className='navbar-menu'>
+            <ul>
+              <li>
+                <Link to="/messenger">Messenger</Link>
+              </li>
+              <li>
+                <Link to="/users">Users</Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div id='content'>

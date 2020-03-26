@@ -1,19 +1,30 @@
 import React from 'react';
+import { useFormik } from 'formik';
 
 export function MessageForm(props) {
-  const { onSubmit, setCurrentMessage, currentMessage } = props;
+  const { onSubmit } = props;
+  const formik = useFormik({
+    initialValues: {
+      message: '',
+    },
+    onSubmit: values => {
+      onSubmit(values.message);
+    },
+  });
 
   return (
-    <div className='messenger-chatRoom-messageForm'>
-      <form onSubmit={onSubmit}>
+    <div className='messenger-form'>
+      <form onSubmit={formik.handleSubmit}>
         <input
-          name="currentMessage"
-          type="currentMessage"
+          id='message'
+          name='message'
+          type='message'
+          className='messenger-roomForm-input'
           placeholder='Type message ...'
-          value={currentMessage}
-          onChange={e => setCurrentMessage(e.target.value)}
+          onChange={formik.handleChange}
+          value={formik.values.message}
         />
-        <button className="messenger-chatRoom-messageForm-button"> Send </button>
+        <button type='submit' className='messenger-formButton'>Send</button>
       </form>
     </div>
   );

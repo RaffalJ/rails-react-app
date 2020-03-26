@@ -1,68 +1,72 @@
-.messenger-roomsList {
-  width: 15%;
-  height: 80vh;
-  float: left;
-  list-style-type: none;
-  background: #f8f9fa;
-
-  li {
-    width: 100%;
-    height: 80px;
-    line-height: 80px;
-    text-align: center;
-    font-size: 18px;
-  }
-  .active {
-    background: #e9ecef;
-  }
-  a {
-    text-decoration: none;
-    display: inline-block;
-    width: 100%;
-  }
-}
-
-.messenger-roomForm {
-  float: right;
+.messenger-content {
+  max-height: 80vh;
   width: 85%;
-  padding: 40px;
+  float: right;
+  list-style-type: none;
+  padding: 20px;
 
   input:focus {
     outline: 0;
   }
 }
 
-.messenger-roomForm-input {
-  width: 300px;
+.messenger-formButton {
+  min-width: 80px;
+  width: 10%;
   height: 50px;
-  padding: 10px;
-  margin-top: 20px;
-  border: 2px solid #ebf0f5;
-  border-radius: 25px;
-}
-
-.messenger-roomForm-button {
-  width: 80px;
-  height: 50px;
-  border-radius: 25px;
+  background: #212b2f;
   color: white;
-  background: #007bff;
+  border-radius: 25px;
 }
 
-.messenger-chatRoom {
-  max-height: 80vh;
+.messenger-form {
   width: 80%;
-  float: right;
+
+  input {
+    min-width: 300px;
+    width: 60%;
+    height: 50px;
+    padding: 7px 15px 7px 15px;
+    border: 2px solid #ebf0f5;
+    border-radius: 25px;
+  }
+
+  input:focus {
+    outline:0;
+  }
+}
+
+.messenger-roomsList {
+  width: 15%;
+  height: 100vh;
+  float: left;
   list-style-type: none;
-  padding: 0px 0px 0px 20px;
+  background: #212b2f;
+
+  li {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  a {
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    color: white;
+  }
 }
 
 .messenger-chatRoom-messageList {
   min-height: 40vh;
   max-height: 70vh;
+  margin-top: 20px;
+  margin-bottom: 10px;
   width: 100%;
   overflow: scroll;
-  border: 2px solid #ebf0f5;
+  border: 1px solid #babec8;
   border-radius: 25px;
   padding: 20px;
 }
@@ -79,7 +83,7 @@
   height: auto;
   float: left;
   padding: 8px 15px 5px 15px;
-  background: #007bff;
+  background: #2582bb;
   color: white;
   border-radius: 15px;
 }
@@ -98,31 +102,4 @@
   padding-top: 12px;
   float: right;
   font-size: 12px;
-}
-
-.messenger-chatRoom-messageForm {
-  width: 100%;
-  font-size: 18px;
-
-  input {
-    min-width: 100px;
-    width: 60%;
-    height: 50px;
-    padding: 7px 15px 7px 15px;
-    border: 2px solid #ebf0f5;
-    border-radius: 25px;
-  }
-
-  input:focus {
-    outline:0;
-  }
-}
-
-.messenger-chatRoom-messageForm-button {
-  min-width: 80px;
-  width: 10%;
-  height: 50px;
-  background: #007bff;
-  color: white;
-  border-radius: 25px;
 }

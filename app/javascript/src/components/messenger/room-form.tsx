@@ -1,22 +1,37 @@
 import React from 'react';
+import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
 
-export default function RoomForm(props) {
-  const { onSubmit, newRoomName, setNewRoomName } = props;
+import { createRoom } from './actions';
 
-  return(
-    <div className='messenger-roomForm'>
-      <h2> Create new room</h2>
-      <form onSubmit={onSubmit}>
-        <input
-          name="currentMessage"
-          className='messenger-roomForm-input'
-          type="currentMessage"
-          placeholder='Type new room name'
-          value={newRoomName}
-          onChange={e => setNewRoomName(e.target.value)}
-        />
-        <button className='messenger-roomForm-button'> Send </button>
-      </form>
+export default function RoomForm() {
+  const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+    },
+    onSubmit: values => {
+      createRoom(dispatch, { room: { name: values.name } });
+    },
+  });
+
+  return (
+    <div className='messenger-content'>
+      <div className='messenger-form'>
+        <h2> Create new room</h2>
+        <form onSubmit={formik.handleSubmit}>
+          <input
+            id='name'
+            name='name'
+            type='name'
+            className='messenger-roomForm-input'
+            placeholder='Type new chat room name...'
+            onChange={formik.handleChange}
+            value={formik.values.name}
+          />
+          <button type='submit' className='messenger-formButton'>Submit</button>
+        </form>
+      </div>
     </div>
   );
 }
