@@ -78,23 +78,23 @@
   margin: 0px;
 }
 
-.messenger-chatRoom-messageList-messageContainer-currentUser {
+%messenger-chatRoom-messageList-user {
   width: 60%;
-  height: auto;
-  float: left;
   padding: 8px 15px 5px 15px;
-  background: #2582bb;
   color: white;
   border-radius: 15px;
 }
 
+.messenger-chatRoom-messageList-messageContainer-currentUser {
+  @extend %messenger-chatRoom-messageList-user;
+  float: left;
+  background: #2582bb;
+}
+
 .messenger-chatRoom-messageList-messageContainer-otherUser {
-  width: 60%;
+  @extend %messenger-chatRoom-messageList-user;
   float: right;
-  padding: 8px 15px 5px 15px;
   background: #868e96;
-  color: white;
-  border-radius: 15px;
 }
 
 .messenger-chatRoom-messageList-messageContainer-createdAtField {

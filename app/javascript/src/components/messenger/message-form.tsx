@@ -7,8 +7,9 @@ export function MessageForm(props) {
     initialValues: {
       message: '',
     },
-    onSubmit: values => {
+    onSubmit: (values, { resetForm }) => {
       onSubmit(values.message);
+      resetForm();
     },
   });
 
