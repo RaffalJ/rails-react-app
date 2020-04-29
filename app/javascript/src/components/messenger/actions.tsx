@@ -10,18 +10,17 @@ export const fetchRooms = async (dispatch: Dispatch) => {
     const payload = (await API.fetchRooms()).data;
     dispatch({ type: 'rooms-success', payload });
   } catch(error) {
-    dispatch({ type: 'rooms-failure', error: error.message });
+    dispatch({ type: 'rooms-error', error: error.message });
   }
 }
 
 export const createRoom = async (dispatch: Dispatch, payload: IRoomPayload) => {
   try {
     const response = await API.createRoom(payload);
-    const success = (response.status === 200 || response.status === 204) ? true : false;
-    if (success) dispatch({ type: 'rooms-add', payload: response.data });
-    else throw Error('Invalid response');
+    dispatch({ type: 'rooms-add', payload: response.data });
+    dispatch({ type: 'rooms-error', error: undefined });
   } catch(error) {
-    dispatch({ type: 'rooms-failure', error: error.message });
+    dispatch({ type: 'rooms-error', error: error.message });
   }
 }
 
@@ -31,7 +30,7 @@ export const fetchMessages = async (dispatch: Dispatch, roomId: string) => {
     const payload = (await API.fetchMessages(roomId)).data;
     dispatch({ type: 'messages-success', payload });
   } catch(error) {
-    dispatch({ type: 'messages-failure', error: error.message });
+    dispatch({ type: 'messages-error', error: error.message });
   }
 }
 

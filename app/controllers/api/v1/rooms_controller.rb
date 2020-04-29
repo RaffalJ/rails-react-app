@@ -10,13 +10,9 @@ module Api
       end
 
       def create
-        @room = Room.new permitted_params
-
-        if @room.save
-          render(:create, locals: { room: @room },status: :ok)
-        else
-          head(status: :bad_request)
-        end
+        result = ::Rooms::Create.new.call(permitted_params)
+        result.success && render(:create, locals: { room: result.success }, status: :ok)
+        result.failure && (head :bad_request)
       end
 
       private

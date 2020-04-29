@@ -8,6 +8,7 @@ ruby '2.6.5'
 gem 'bcrypt',                             '~> 3.1.7'
 gem 'bootsnap',                           '>= 1.4.2', require: false
 gem 'devise'
+gem 'dry-monads'
 gem 'faker'
 gem 'haml',                               '~> 5.1.1'
 gem 'jb',                                 '~> 0.7.0'

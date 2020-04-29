@@ -10,8 +10,9 @@ export default function RoomForm() {
     initialValues: {
       name: '',
     },
-    onSubmit: values => {
+    onSubmit: (values, { resetForm } )=> {
       createRoom(dispatch, { room: { name: values.name } });
+      resetForm();
     },
   });
 

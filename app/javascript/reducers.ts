@@ -4,9 +4,9 @@ const defaultCase = (state: any) => ({ 'DEFAULT': () => { return state } });
 
 const fetchCases = (field: string, state: any, action: any) => ({
   [`${field}-success`]: () => ({ ...state, [`${field}`]: action.payload }),
-  [`${field}-failure`]: () => ({ ...state, [`${field}`]: { error: action.error } }),
   [`${field}-loading`]: () => ({ ...state, [`${field}`]: { loading: action.loading } }),
   [`${field}-add`]:     () => ({ ...state, [`${field}`]: state[`${field}`].concat(action.payload) }),
+  [`${field}-error`]:   () => ({ ...state, [`${field}Error`]: { error: action.error } }),
 });
 
 const caseSelector = (type: string, fields: string[], state: any, action: any) => {
